@@ -1,0 +1,4 @@
+DEPENDENCIES += 
+INCLUDEPATHS += lib_glm/inc/
+LIBRARIES    +=
+
