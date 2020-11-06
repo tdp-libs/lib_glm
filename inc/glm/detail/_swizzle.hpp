@@ -82,7 +82,7 @@ namespace detail
 	public:
 		GLM_FUNC_QUALIFIER _swizzle_base2& operator= (const T& t)
 		{
-			for (int i = 0; i < N; ++i)
+			for(int i = 0; i < N; ++i)
 				(*this)[i] = t;
 			return *this;
 		}
@@ -132,9 +132,9 @@ namespace detail
 			// The copier should optimize out the copy in cases where the function is
 			// properly inlined and the copy is not necessary.
 			T t[N];
-			for (int i = 0; i < N; ++i)
+			for(int i = 0; i < N; ++i)
 				t[i] = that[i];
-			for (int i = 0; i < N; ++i)
+			for(int i = 0; i < N; ++i)
 				op( (*this)[i], t[i] );
 		}
 	};

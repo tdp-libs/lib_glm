@@ -145,7 +145,7 @@ namespace detail
 	};
 #	endif
 
-#	if (GLM_ARCH & GLM_ARCH_AVX_BIT)
+#	if(GLM_ARCH & GLM_ARCH_AVX_BIT)
 	template<>
 	struct storage<4, double, true>
 	{
@@ -153,7 +153,7 @@ namespace detail
 	};
 #	endif
 
-#	if (GLM_ARCH & GLM_ARCH_AVX2_BIT)
+#	if(GLM_ARCH & GLM_ARCH_AVX2_BIT)
 	template<>
 	struct storage<4, detail::int64, true>
 	{

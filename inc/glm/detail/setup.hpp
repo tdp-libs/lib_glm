@@ -72,15 +72,15 @@
 #define GLM_LANG_CXXMS			GLM_LANG_CXXMS_FLAG
 #define GLM_LANG_CXXGNU			GLM_LANG_CXXGNU_FLAG
 
-#if (defined(_MSC_EXTENSIONS))
+#if(defined(_MSC_EXTENSIONS))
 #	define GLM_LANG_EXT GLM_LANG_CXXMS_FLAG
-#elif ((GLM_COMPILER & (GLM_COMPILER_CLANG | GLM_COMPILER_GCC)) && (GLM_ARCH & GLM_ARCH_SIMD_BIT))
+#elif((GLM_COMPILER & (GLM_COMPILER_CLANG | GLM_COMPILER_GCC)) && (GLM_ARCH & GLM_ARCH_SIMD_BIT))
 #	define GLM_LANG_EXT GLM_LANG_CXXMS_FLAG
 #else
 #	define GLM_LANG_EXT 0
 #endif
 
-#if (defined(GLM_FORCE_CXX_UNKNOWN))
+#if(defined(GLM_FORCE_CXX_UNKNOWN))
 #	define GLM_LANG 0
 #elif defined(GLM_FORCE_CXX2A)
 #	define GLM_LANG (GLM_LANG_CXX2A | GLM_LANG_EXT)
@@ -143,7 +143,7 @@
 #if GLM_PLATFORM == GLM_PLATFORM_ANDROID && !defined(GLM_LANG_STL11_FORCED)
 #	define GLM_HAS_CXX11_STL 0
 #elif GLM_COMPILER & GLM_COMPILER_CLANG
-#	if (defined(_LIBCPP_VERSION) && GLM_LANG & GLM_LANG_CXX11_FLAG) || defined(GLM_LANG_STL11_FORCED)
+#	if(defined(_LIBCPP_VERSION) && GLM_LANG & GLM_LANG_CXX11_FLAG) || defined(GLM_LANG_STL11_FORCED)
 #		define GLM_HAS_CXX11_STL 1
 #	else
 #		define GLM_HAS_CXX11_STL 0
@@ -274,11 +274,11 @@
 
 // N2235 Generalized Constant Expressions http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2235.pdf
 // N3652 Extended Constant Expressions http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html
-#if (GLM_ARCH & GLM_ARCH_SIMD_BIT) // Compiler SIMD intrinsics don't support constexpr...
+#if(GLM_ARCH & GLM_ARCH_SIMD_BIT) // Compiler SIMD intrinsics don't support constexpr...
 #	define GLM_HAS_CONSTEXPR 0
-#elif (GLM_COMPILER & GLM_COMPILER_CLANG)
+#elif(GLM_COMPILER & GLM_COMPILER_CLANG)
 #	define GLM_HAS_CONSTEXPR __has_feature(cxx_relaxed_constexpr)
-#elif (GLM_LANG & GLM_LANG_CXX14_FLAG)
+#elif(GLM_LANG & GLM_LANG_CXX14_FLAG)
 #	define GLM_HAS_CONSTEXPR 1
 #else
 #	define GLM_HAS_CONSTEXPR ((GLM_LANG & GLM_LANG_CXX0X_FLAG) && GLM_HAS_INITIALIZER_LISTS && (\
@@ -481,7 +481,7 @@
 ///////////////////////////////////////////////////////////////////////////////////
 // Qualifiers
 
-#if (GLM_COMPILER & GLM_COMPILER_VC) || ((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_PLATFORM & GLM_PLATFORM_WINDOWS))
+#if(GLM_COMPILER & GLM_COMPILER_VC) || ((GLM_COMPILER & GLM_COMPILER_INTEL) && (GLM_PLATFORM & GLM_PLATFORM_WINDOWS))
 #	define GLM_DEPRECATED __declspec(deprecated)
 #	define GLM_ALIGNED_TYPEDEF(type, name, alignment) typedef __declspec(align(alignment)) type name
 #elif GLM_COMPILER & (GLM_COMPILER_GCC | GLM_COMPILER_CLANG | GLM_COMPILER_INTEL)
@@ -593,7 +593,7 @@ namespace detail
 #	if GLM_HAS_EXTENDED_INTEGER_TYPE
 		typedef std::uint64_t						uint64;
 		typedef std::int64_t						int64;
-#	elif (defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901L)) // C99 detected, 64 bit types available
+#	elif(defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 199901L)) // C99 detected, 64 bit types available
 		typedef uint64_t							uint64;
 		typedef int64_t								int64;
 #	elif GLM_COMPILER & GLM_COMPILER_VC
@@ -603,7 +603,7 @@ namespace detail
 #		pragma GCC diagnostic ignored "-Wlong-long"
 		__extension__ typedef unsigned long long	uint64;
 		__extension__ typedef signed long long		int64;
-#	elif (GLM_COMPILER & GLM_COMPILER_CLANG)
+#	elif(GLM_COMPILER & GLM_COMPILER_CLANG)
 #		pragma clang diagnostic ignored "-Wc++11-long-long"
 		typedef unsigned long long					uint64;
 		typedef signed long long					int64;
@@ -763,7 +763,7 @@ namespace detail
 ///////////////////////////////////////////////////////////////////////////////////
 // Configure the use of anonymous structure as implementation detail
 
-#if ((GLM_CONFIG_SIMD == GLM_ENABLE) || (GLM_CONFIG_SWIZZLE == GLM_SWIZZLE_OPERATOR) || (GLM_CONFIG_ALIGNED_GENTYPES == GLM_ENABLE))
+#if((GLM_CONFIG_SIMD == GLM_ENABLE) || (GLM_CONFIG_SWIZZLE == GLM_SWIZZLE_OPERATOR) || (GLM_CONFIG_ALIGNED_GENTYPES == GLM_ENABLE))
 #	define GLM_CONFIG_ANONYMOUS_STRUCT GLM_ENABLE
 #else
 #	define GLM_CONFIG_ANONYMOUS_STRUCT GLM_DISABLE
@@ -838,7 +838,7 @@ namespace detail
 ///////////////////////////////////////////////////////////////////////////////////
 // Check inclusions of different versions of GLM
 
-#elif ((GLM_SETUP_INCLUDED != GLM_VERSION) && !defined(GLM_FORCE_IGNORE_VERSION))
+#elif((GLM_SETUP_INCLUDED != GLM_VERSION) && !defined(GLM_FORCE_IGNORE_VERSION))
 #	error "GLM error: A different version of GLM is already included. Define GLM_FORCE_IGNORE_VERSION before including GLM headers to ignore this error."
 #elif GLM_SETUP_INCLUDED == GLM_VERSION
 
@@ -854,33 +854,33 @@ namespace detail
 #		pragma message (GLM_STR(GLM_VERSION_MESSAGE))
 
 	// Report C++ language
-#	if (GLM_LANG & GLM_LANG_CXX2A_FLAG) && (GLM_LANG & GLM_LANG_EXT)
+#	if(GLM_LANG & GLM_LANG_CXX2A_FLAG) && (GLM_LANG & GLM_LANG_EXT)
 #		pragma message("GLM: C++ 2A with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX2A_FLAG)
+#	elif(GLM_LANG & GLM_LANG_CXX2A_FLAG)
 #		pragma message("GLM: C++ 2A")
-#	elif (GLM_LANG & GLM_LANG_CXX17_FLAG) && (GLM_LANG & GLM_LANG_EXT)
+#	elif(GLM_LANG & GLM_LANG_CXX17_FLAG) && (GLM_LANG & GLM_LANG_EXT)
 #		pragma message("GLM: C++ 17 with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX17_FLAG)
+#	elif(GLM_LANG & GLM_LANG_CXX17_FLAG)
 #		pragma message("GLM: C++ 17")
-#	elif (GLM_LANG & GLM_LANG_CXX14_FLAG) && (GLM_LANG & GLM_LANG_EXT)
+#	elif(GLM_LANG & GLM_LANG_CXX14_FLAG) && (GLM_LANG & GLM_LANG_EXT)
 #		pragma message("GLM: C++ 14 with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX14_FLAG)
+#	elif(GLM_LANG & GLM_LANG_CXX14_FLAG)
 #		pragma message("GLM: C++ 14")
-#	elif (GLM_LANG & GLM_LANG_CXX11_FLAG) && (GLM_LANG & GLM_LANG_EXT)
+#	elif(GLM_LANG & GLM_LANG_CXX11_FLAG) && (GLM_LANG & GLM_LANG_EXT)
 #		pragma message("GLM: C++ 11 with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX11_FLAG)
+#	elif(GLM_LANG & GLM_LANG_CXX11_FLAG)
 #		pragma message("GLM: C++ 11")
-#	elif (GLM_LANG & GLM_LANG_CXX0X_FLAG) && (GLM_LANG & GLM_LANG_EXT)
+#	elif(GLM_LANG & GLM_LANG_CXX0X_FLAG) && (GLM_LANG & GLM_LANG_EXT)
 #		pragma message("GLM: C++ 0x with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX0X_FLAG)
+#	elif(GLM_LANG & GLM_LANG_CXX0X_FLAG)
 #		pragma message("GLM: C++ 0x")
-#	elif (GLM_LANG & GLM_LANG_CXX03_FLAG) && (GLM_LANG & GLM_LANG_EXT)
+#	elif(GLM_LANG & GLM_LANG_CXX03_FLAG) && (GLM_LANG & GLM_LANG_EXT)
 #		pragma message("GLM: C++ 03 with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX03_FLAG)
+#	elif(GLM_LANG & GLM_LANG_CXX03_FLAG)
 #		pragma message("GLM: C++ 03")
-#	elif (GLM_LANG & GLM_LANG_CXX98_FLAG) && (GLM_LANG & GLM_LANG_EXT)
+#	elif(GLM_LANG & GLM_LANG_CXX98_FLAG) && (GLM_LANG & GLM_LANG_EXT)
 #		pragma message("GLM: C++ 98 with extensions")
-#	elif (GLM_LANG & GLM_LANG_CXX98_FLAG)
+#	elif(GLM_LANG & GLM_LANG_CXX98_FLAG)
 #		pragma message("GLM: C++ 98")
 #	else
 #		pragma message("GLM: C++ language undetected")
@@ -902,64 +902,64 @@ namespace detail
 #	endif
 
 	// Report build target
-#	if (GLM_ARCH & GLM_ARCH_AVX2_BIT) && (GLM_MODEL == GLM_MODEL_64)
+#	if(GLM_ARCH & GLM_ARCH_AVX2_BIT) && (GLM_MODEL == GLM_MODEL_64)
 #		pragma message("GLM: x86 64 bits with AVX2 instruction set build target")
-#	elif (GLM_ARCH & GLM_ARCH_AVX2_BIT) && (GLM_MODEL == GLM_MODEL_32)
+#	elif(GLM_ARCH & GLM_ARCH_AVX2_BIT) && (GLM_MODEL == GLM_MODEL_32)
 #		pragma message("GLM: x86 32 bits with AVX2 instruction set build target")
 
-#	elif (GLM_ARCH & GLM_ARCH_AVX_BIT) && (GLM_MODEL == GLM_MODEL_64)
+#	elif(GLM_ARCH & GLM_ARCH_AVX_BIT) && (GLM_MODEL == GLM_MODEL_64)
 #		pragma message("GLM: x86 64 bits with AVX instruction set build target")
-#	elif (GLM_ARCH & GLM_ARCH_AVX_BIT) && (GLM_MODEL == GLM_MODEL_32)
+#	elif(GLM_ARCH & GLM_ARCH_AVX_BIT) && (GLM_MODEL == GLM_MODEL_32)
 #		pragma message("GLM: x86 32 bits with AVX instruction set build target")
 
-#	elif (GLM_ARCH & GLM_ARCH_SSE42_BIT) && (GLM_MODEL == GLM_MODEL_64)
+#	elif(GLM_ARCH & GLM_ARCH_SSE42_BIT) && (GLM_MODEL == GLM_MODEL_64)
 #		pragma message("GLM: x86 64 bits with SSE4.2 instruction set build target")
-#	elif (GLM_ARCH & GLM_ARCH_SSE42_BIT) && (GLM_MODEL == GLM_MODEL_32)
+#	elif(GLM_ARCH & GLM_ARCH_SSE42_BIT) && (GLM_MODEL == GLM_MODEL_32)
 #		pragma message("GLM: x86 32 bits with SSE4.2 instruction set build target")
 
-#	elif (GLM_ARCH & GLM_ARCH_SSE41_BIT) && (GLM_MODEL == GLM_MODEL_64)
+#	elif(GLM_ARCH & GLM_ARCH_SSE41_BIT) && (GLM_MODEL == GLM_MODEL_64)
 #		pragma message("GLM: x86 64 bits with SSE4.1 instruction set build target")
-#	elif (GLM_ARCH & GLM_ARCH_SSE41_BIT) && (GLM_MODEL == GLM_MODEL_32)
+#	elif(GLM_ARCH & GLM_ARCH_SSE41_BIT) && (GLM_MODEL == GLM_MODEL_32)
 #		pragma message("GLM: x86 32 bits with SSE4.1 instruction set build target")
 
-#	elif (GLM_ARCH & GLM_ARCH_SSSE3_BIT) && (GLM_MODEL == GLM_MODEL_64)
+#	elif(GLM_ARCH & GLM_ARCH_SSSE3_BIT) && (GLM_MODEL == GLM_MODEL_64)
 #		pragma message("GLM: x86 64 bits with SSSE3 instruction set build target")
-#	elif (GLM_ARCH & GLM_ARCH_SSSE3_BIT) && (GLM_MODEL == GLM_MODEL_32)
+#	elif(GLM_ARCH & GLM_ARCH_SSSE3_BIT) && (GLM_MODEL == GLM_MODEL_32)
 #		pragma message("GLM: x86 32 bits with SSSE3 instruction set build target")
 
-#	elif (GLM_ARCH & GLM_ARCH_SSE3_BIT) && (GLM_MODEL == GLM_MODEL_64)
+#	elif(GLM_ARCH & GLM_ARCH_SSE3_BIT) && (GLM_MODEL == GLM_MODEL_64)
 #		pragma message("GLM: x86 64 bits with SSE3 instruction set build target")
-#	elif (GLM_ARCH & GLM_ARCH_SSE3_BIT) && (GLM_MODEL == GLM_MODEL_32)
+#	elif(GLM_ARCH & GLM_ARCH_SSE3_BIT) && (GLM_MODEL == GLM_MODEL_32)
 #		pragma message("GLM: x86 32 bits with SSE3 instruction set build target")
 
-#	elif (GLM_ARCH & GLM_ARCH_SSE2_BIT) && (GLM_MODEL == GLM_MODEL_64)
+#	elif(GLM_ARCH & GLM_ARCH_SSE2_BIT) && (GLM_MODEL == GLM_MODEL_64)
 #		pragma message("GLM: x86 64 bits with SSE2 instruction set build target")
-#	elif (GLM_ARCH & GLM_ARCH_SSE2_BIT) && (GLM_MODEL == GLM_MODEL_32)
+#	elif(GLM_ARCH & GLM_ARCH_SSE2_BIT) && (GLM_MODEL == GLM_MODEL_32)
 #		pragma message("GLM: x86 32 bits with SSE2 instruction set build target")
 
-#	elif (GLM_ARCH & GLM_ARCH_X86_BIT) && (GLM_MODEL == GLM_MODEL_64)
+#	elif(GLM_ARCH & GLM_ARCH_X86_BIT) && (GLM_MODEL == GLM_MODEL_64)
 #		pragma message("GLM: x86 64 bits build target")
-#	elif (GLM_ARCH & GLM_ARCH_X86_BIT) && (GLM_MODEL == GLM_MODEL_32)
+#	elif(GLM_ARCH & GLM_ARCH_X86_BIT) && (GLM_MODEL == GLM_MODEL_32)
 #		pragma message("GLM: x86 32 bits build target")
 
-#	elif (GLM_ARCH & GLM_ARCH_NEON_BIT) && (GLM_MODEL == GLM_MODEL_64)
+#	elif(GLM_ARCH & GLM_ARCH_NEON_BIT) && (GLM_MODEL == GLM_MODEL_64)
 #		pragma message("GLM: ARM 64 bits with Neon instruction set build target")
-#	elif (GLM_ARCH & GLM_ARCH_NEON_BIT) && (GLM_MODEL == GLM_MODEL_32)
+#	elif(GLM_ARCH & GLM_ARCH_NEON_BIT) && (GLM_MODEL == GLM_MODEL_32)
 #		pragma message("GLM: ARM 32 bits with Neon instruction set build target")
 
-#	elif (GLM_ARCH & GLM_ARCH_ARM_BIT) && (GLM_MODEL == GLM_MODEL_64)
+#	elif(GLM_ARCH & GLM_ARCH_ARM_BIT) && (GLM_MODEL == GLM_MODEL_64)
 #		pragma message("GLM: ARM 64 bits build target")
-#	elif (GLM_ARCH & GLM_ARCH_ARM_BIT) && (GLM_MODEL == GLM_MODEL_32)
+#	elif(GLM_ARCH & GLM_ARCH_ARM_BIT) && (GLM_MODEL == GLM_MODEL_32)
 #		pragma message("GLM: ARM 32 bits build target")
 
-#	elif (GLM_ARCH & GLM_ARCH_MIPS_BIT) && (GLM_MODEL == GLM_MODEL_64)
+#	elif(GLM_ARCH & GLM_ARCH_MIPS_BIT) && (GLM_MODEL == GLM_MODEL_64)
 #		pragma message("GLM: MIPS 64 bits build target")
-#	elif (GLM_ARCH & GLM_ARCH_MIPS_BIT) && (GLM_MODEL == GLM_MODEL_32)
+#	elif(GLM_ARCH & GLM_ARCH_MIPS_BIT) && (GLM_MODEL == GLM_MODEL_32)
 #		pragma message("GLM: MIPS 32 bits build target")
 
-#	elif (GLM_ARCH & GLM_ARCH_PPC_BIT) && (GLM_MODEL == GLM_MODEL_64)
+#	elif(GLM_ARCH & GLM_ARCH_PPC_BIT) && (GLM_MODEL == GLM_MODEL_64)
 #		pragma message("GLM: PowerPC 64 bits build target")
-#	elif (GLM_ARCH & GLM_ARCH_PPC_BIT) && (GLM_MODEL == GLM_MODEL_32)
+#	elif(GLM_ARCH & GLM_ARCH_PPC_BIT) && (GLM_MODEL == GLM_MODEL_32)
 #		pragma message("GLM: PowerPC 32 bits build target")
 #	else
 #		pragma message("GLM: Unknown build target")

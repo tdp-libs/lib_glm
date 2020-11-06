@@ -12,7 +12,7 @@
 
 #pragma once
 
-#if (GLM_CONFIG_ALIGNED_GENTYPES == GLM_DISABLE)
+#if(GLM_CONFIG_ALIGNED_GENTYPES == GLM_DISABLE)
 #	error "GLM: Aligned gentypes require to enable C++ language extensions. Define GLM_FORCE_ALIGNED_GENTYPES before including GLM headers to use aligned types."
 #endif
 
