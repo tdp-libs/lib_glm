@@ -23,6 +23,8 @@ namespace detail
 
 		GLM_CONSTEXPR float_t(float_type Num = 0.0f) : f(Num) {}
 
+    ~float_t()=default;
+
 		GLM_CONSTEXPR float_t& operator=(float_t const& x)
 		{
 			f = x.f;
@@ -45,6 +47,8 @@ namespace detail
 		typedef double float_type;
 
 		GLM_CONSTEXPR float_t(float_type Num = static_cast<float_type>(0)) : f(Num) {}
+
+    ~float_t()=default;
 
 		GLM_CONSTEXPR float_t& operator=(float_t const& x)
 		{
