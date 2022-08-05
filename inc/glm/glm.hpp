@@ -111,26 +111,26 @@
 #include <cfloat>
 #include <limits>
 #include <cassert>
-#include "fwd.hpp"
+#include "fwd.hpp" // IWYU pragma: keep
 
-#include "vec2.hpp"
-#include "vec3.hpp"
-#include "vec4.hpp"
-#include "mat2x2.hpp"
-#include "mat2x3.hpp"
-#include "mat2x4.hpp"
-#include "mat3x2.hpp"
-#include "mat3x3.hpp"
-#include "mat3x4.hpp"
-#include "mat4x2.hpp"
-#include "mat4x3.hpp"
-#include "mat4x4.hpp"
+#include "vec2.hpp" // IWYU pragma: keep
+#include "vec3.hpp" // IWYU pragma: keep
+#include "vec4.hpp" // IWYU pragma: keep
+#include "mat2x2.hpp" // IWYU pragma: keep
+#include "mat2x3.hpp" // IWYU pragma: keep
+#include "mat2x4.hpp" // IWYU pragma: keep
+#include "mat3x2.hpp" // IWYU pragma: keep
+#include "mat3x3.hpp" // IWYU pragma: keep
+#include "mat3x4.hpp" // IWYU pragma: keep
+#include "mat4x2.hpp" // IWYU pragma: keep
+#include "mat4x3.hpp" // IWYU pragma: keep
+#include "mat4x4.hpp" // IWYU pragma: keep
 
-#include "trigonometric.hpp"
-#include "exponential.hpp"
-#include "common.hpp"
-#include "packing.hpp"
-#include "geometric.hpp"
-#include "matrix.hpp"
-#include "vector_relational.hpp"
-#include "integer.hpp"
+#include "trigonometric.hpp" // IWYU pragma: keep
+#include "exponential.hpp" // IWYU pragma: keep
+#include "common.hpp" // IWYU pragma: keep
+#include "packing.hpp" // IWYU pragma: keep
+#include "geometric.hpp" // IWYU pragma: keep
+#include "matrix.hpp" // IWYU pragma: keep
+#include "vector_relational.hpp" // IWYU pragma: keep
+#include "integer.hpp" // IWYU pragma: keep
